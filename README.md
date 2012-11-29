@@ -16,7 +16,7 @@ style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
 style='mso-list:Ignore'>a)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span></span><![endif]>Download the local update site <a
 href="https://github.com/hs2501/ShowFileOnDisk/blob/master/ShowFileOnDisk.site.zip"><span
-style='text-decoration:none;text-underline:none'>https://github.com/hs2501/ShowFileOnDisk/blob/master/ShowFileOnDisk.site.zip</span></a></p>
+style='text-decoration:none;text-underline:none'>https://github.com/hs2501/ShowFileOnDisk/blob/master/ShowFileOnDisk.site.zip?raw=true</span></a></p>
 
 <p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo1'><![if !supportLists]><span
 style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
