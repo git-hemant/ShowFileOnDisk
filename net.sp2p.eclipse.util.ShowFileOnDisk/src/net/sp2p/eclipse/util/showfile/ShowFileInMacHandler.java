@@ -17,12 +17,17 @@
  */    	
 package net.sp2p.eclipse.util.showfile;
 
+/**
+ * The handler for OSX environment. Here we will use the OSX command 'open -R <Path>'.
+ * 
+ * @author Hemant Singh
+ */
 public class ShowFileInMacHandler extends ShowFileInHandler
 {
 
 	protected String getRuntimeCommand(String path)
 	{
-		return "open -R " + path;
+		return "open -R " + path; //$NON-NLS-1$
 	}
 
 }

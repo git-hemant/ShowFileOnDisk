@@ -17,10 +17,15 @@
  */    	
 package net.sp2p.eclipse.util.showfile;
 
+/**
+ * The handler for windows environment. Here we will use the windows command 'explorer /select <Path>'.
+ * 
+ * @author Hemant Singh
+ */
 public class ShowFileInWindowsHandler extends ShowFileInHandler
 {
 	protected String getRuntimeCommand(String path)
 	{
-		return "explorer /select,  " + path;
+		return "explorer /select,  " + path; //$NON-NLS-1$
 	}
 }

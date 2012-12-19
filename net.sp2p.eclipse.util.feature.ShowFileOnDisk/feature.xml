@@ -9,8 +9,9 @@
       [Enter Feature Description here.]
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright url="http://www.gnu.org/licenses/gpl.html">
+      Eclipse Plugin ShowFileOnDisk
+Copyright (C) 2012  Hemant Singh
    </copyright>
 
    <license url="">

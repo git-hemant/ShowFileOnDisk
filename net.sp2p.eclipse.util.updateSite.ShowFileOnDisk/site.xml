@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/net.sp2p.eclipse.util.feature.ShowFileOnDisk_1.0.0.201211291011.jar" id="net.sp2p.eclipse.util.feature.ShowFileOnDisk" version="1.0.0.201211291011">
+   <feature url="features/net.sp2p.eclipse.util.feature.ShowFileOnDisk_1.0.0.201212182230.jar" id="net.sp2p.eclipse.util.feature.ShowFileOnDisk" version="1.0.0.201212182230">
       <category name="ShowFileOnDisk"/>
    </feature>
-   <category-def name="ShowFileOnDisk" label="Show File On Disk"/>
+   <category-def name="ShowFileOnDisk" label="Show File On Disk">
+      <description>
+         Shows the selected Eclipse resource on the local filesystem
+      </description>
+   </category-def>
 </site>
