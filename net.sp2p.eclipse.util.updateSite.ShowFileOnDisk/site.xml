@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/net.sp2p.eclipse.util.feature.ShowFileOnDisk_1.0.0.201212182230.jar" id="net.sp2p.eclipse.util.feature.ShowFileOnDisk" version="1.0.0.201212182230">
+   <feature url="features/net.sp2p.eclipse.util.feature.ShowFileOnDisk_1.0.0.201301222231.jar" id="net.sp2p.eclipse.util.feature.ShowFileOnDisk" version="1.0.0.201301222231">
       <category name="ShowFileOnDisk"/>
    </feature>
    <category-def name="ShowFileOnDisk" label="Show File On Disk">
