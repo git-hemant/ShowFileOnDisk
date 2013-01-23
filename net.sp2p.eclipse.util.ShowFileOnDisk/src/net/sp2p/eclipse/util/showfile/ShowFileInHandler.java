@@ -69,41 +69,67 @@ public abstract class ShowFileInHandler extends AbstractHandler
 				return null;
 			}
 
-			// In-case of the linked resource, we need to use the path from location URI
-			// as linked resources are virtual items which are mapped to a location.
-			// In-case of lined resource IResource.getLocation() will return it's location
-			// from .project file.
-			String resourcePathOnOS = res.getLocation().toOSString();
-			File file = new File(resourcePathOnOS);
-			// TODO: If somehow we didn't got valid path, which can happen
-			// in-case we are dealing with items which have some custom EFS
-			// implementation underneath. Then we will recursively look for
-			// the parent resource for which we can find the valid path in
-			// filesystem of OS.
-			// TODO: This should be part of the enablement as well.
-			if (!file.exists()) {
-				IResource parentRes = res;
-				while (parentRes != null || !file.exists()) {
-					parentRes = parentRes.getParent();
-					file = new File(parentRes.getRawLocation().toOSString());
-				}
-			}
-			if (file != null && file.exists()) {
-				resourcePathOnOS = file.getAbsolutePath();
-				try {
-					// Create OS specific command which we will execute.
-					String cmdToExecute = getRuntimeCommand(resourcePathOnOS);
-					Runtime.getRuntime().exec(cmdToExecute);
-				} catch (Exception e) {
-					// Log it in the eclipse error log.
-					e.printStackTrace();
-				}
+			String path = mapResourceToFilePath(res);
+
+			try {
+				// Create OS specific command which we will execute.
+				String cmdToExecute = getRuntimeCommand(path);
+				Runtime.getRuntime().exec(cmdToExecute);
+			} catch (Exception e) {
+				// Log it in the eclipse error log.
+				e.printStackTrace();
 			}
         }
         return null;
     }
     
-    protected abstract String getRuntimeCommand(String path);
+    private String mapResourceToFilePath(IResource res) {
+		// Validation for the resource which doesn't have any associated location.
+    	if (res.getLocation() == null || res.getLocation().toOSString() != null) {
+    		return null;
+    	}
+		// In-case of the linked resource, we need to use the path from location URI
+		// as linked resources are virtual items which are mapped to a location.
+		// In-case of lined resource IResource.getLocation() will return it's location
+		// from .project file.
+		String resourcePathOnOS = res.getLocation().toOSString();
+		File file = new File(resourcePathOnOS);
+		// TODO: If somehow we didn't got valid path, which can happen
+		// in-case we are dealing with items which have some custom EFS
+		// implementation underneath. Then we will recursively look for
+		// the parent resource for which we can find the valid path in
+		// filesystem of OS.
+		// TODO: This should be part of the enablement as well.
+		if (!file.exists()) {
+			IResource parentRes = res;
+			while (parentRes != null || !file.exists()) {
+				parentRes = parentRes.getParent();
+				file = new File(parentRes.getRawLocation().toOSString());
+			}
+		}
+		if (file != null && file.exists()) {
+			return file.getAbsolutePath();
+		}
+		
+		// This can happen for virtual resources, for which we can never find the corresponding file on disk
+		// or resources with there own EFS implementation, here we will attempt to use some heuristics to
+		// map EFS implementation to it's disk path.
+		String filePath = resourcePathOnOS;
+		// First try to remove the file extension
+		if (filePath.lastIndexOf('.') > -1) {
+			filePath = filePath.substring(0, filePath.lastIndexOf('.'));
+		}
+		// If we can't find the children, then try lookup parent.
+		while (file != null && !file.exists()) {
+			file = file.getParentFile();
+		}
+		if (file.exists()) {
+			return file.getAbsolutePath();
+		}
+		return null;
+	}
+
+	protected abstract String getRuntimeCommand(String path);
 
     protected IStructuredSelection getStructuredSelection(ExecutionEvent event) throws ExecutionException
     {
