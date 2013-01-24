@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="net.sp2p.eclipse.util.feature.ShowFileOnDisk"
-      label="ShowFileOnDisk"
+      id="com.github.eclipse.util.feature.ShowFileOnDisk"
+      label="Show File On Disk"
       version="1.0.0.qualifier"
-      provider-name="Singh, Hemant">
+      provider-name="Singh, Hemant"
+      os="macosx,win32">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -11,7 +12,7 @@
 
    <copyright url="http://www.gnu.org/licenses/gpl.html">
       Eclipse Plugin ShowFileOnDisk
-Copyright (C) 2012  Hemant Singh
+Copyright (C) 2013  Hemant Singh
    </copyright>
 
    <license url="">
