@@ -115,25 +115,33 @@ public abstract class ShowFileInHandler extends AbstractHandler
 		// filesystem of OS.
 		// TODO: This should be part of the enablement as well.
 		if (!file.exists()) {
-			IResource parentRes = res;
-			while (parentRes != null || !file.exists()) {
-				parentRes = parentRes.getParent();
-				file = new File(parentRes.getRawLocation().toOSString());
+			
+			// This can happen for virtual resources, for which we can never find the corresponding file on disk
+			// or resources with there own EFS implementation, here we will attempt to use some heuristics to
+			// map EFS implementation to it's disk path.
+			String filePath = resourcePathOnOS;
+			// First try to remove the file extension
+			if (filePath.lastIndexOf('.') > -1) {
+				filePath = filePath.substring(0, filePath.lastIndexOf('.'));
+			}
+			file = new File(filePath);
+			if (!file.exists()) {
+				IResource parentRes = res;
+				while (parentRes != null || !file.exists()) {
+					parentRes = parentRes.getParent();
+					if (parentRes == null || parentRes.getRawLocation() == null) {
+						break;
+					}
+					file = new File(parentRes.getRawLocation().toOSString());
+				}
 			}
 		}
 		if (file != null && file.exists()) {
 			return file.getAbsolutePath();
 		}
 		
-		// This can happen for virtual resources, for which we can never find the corresponding file on disk
-		// or resources with there own EFS implementation, here we will attempt to use some heuristics to
-		// map EFS implementation to it's disk path.
-		String filePath = resourcePathOnOS;
-		// First try to remove the file extension
-		if (filePath.lastIndexOf('.') > -1) {
-			filePath = filePath.substring(0, filePath.lastIndexOf('.'));
-		}
-		// If we can't find the children, then try lookup parent.
+		// If we can't find the children, then try lookup parent, this time without resource path location
+		file = new File(resourcePathOnOS);
 		while (file != null && !file.exists()) {
 			file = file.getParentFile();
 		}
