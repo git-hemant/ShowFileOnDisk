@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.github.hs2501.eclipse.util.feature.ShowFileOnDisk_1.0.1.jar" id="com.github.hs2501.eclipse.util.feature.ShowFileOnDisk" version="1.0.1" os="macosx,win32">
+      <category name="com.github.hs2501"/>
+   </feature>
+   <category-def name="com.github.hs2501" label="Show Files On Disk"/>
+</site>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            defaultHandler="com.github.hs2501.eclipse.util.showfile.ShowFileInWindowsHandler"
+            id="com.github.hs2501.eclipse.util.cmd.windows"
+            name="Show in Windows Explorer">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            defaultHandler="com.github.hs2501.eclipse.util.showfile.ShowFileInMacHandler"
+            id="com.github.hs2501.eclipse.util.cmd.mac"
+            name="Show in Finder">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="com.github.hs2501.eclipse.util.cmd.windows"
+               id="com.github.hs2501.eclipse.util.menu.cmd.windows"
+               label="Show in Windows Explorer"
+               mnemonic="E"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <systemTest
+                     property="osgi.os"
+                     value="win32">
+               </systemTest>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="com.github.hs2501.eclipse.util.cmd.mac"
+               id="com.github.hs2501.eclipse.util.menu.cmd.mac"
+               label="Show in Finder"
+               mnemonic="F"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <systemTest
+                     property="osgi.os"
+                     value="macosx">
+               </systemTest>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>

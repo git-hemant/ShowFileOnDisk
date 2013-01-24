@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.github.hs2501.eclipse.util.feature.ShowFileOnDisk"
+      label="Show File On Disk"
+      version="1.0.1"
+      provider-name="Singh, Hemant"
+      os="macosx,win32">
+
+   <description url="http://code.google.com/p/show-file-on-disk/">
+      The Eclipse plug-in which allows the users to navigate to actual file on the operating system which is mapped to the selected Eclipse resource in the Eclipse views like Project Explorer, Package Explorer, etc.
+   </description>
+
+   <copyright url="http://www.gnu.org/licenses/gpl.html">
+      Eclipse Plugin ShowFileOnDisk
+Copyright (C) 2013  Hemant Singh
+   </copyright>
+
+   <license url="">
+      Eclipse plugin ShowFileOnDisk
+Copyright (c) 2013 Hemant Singh
+GNU General Public License
+   </license>
+
+   <plugin
+         id="com.github.hs2501.eclipse.util.ShowFileOnDisk"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

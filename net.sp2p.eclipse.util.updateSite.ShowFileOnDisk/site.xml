@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/com.github.eclipse.util.feature.ShowFileOnDisk_1.0.0.201301231836.jar" id="com.github.eclipse.util.feature.ShowFileOnDisk" version="1.0.0.201301231836" os="macosx,win32"/>
-</site>
